@@ -13,45 +13,41 @@ class CustomNoteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150,
+      height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
         color: cardColor,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Row(
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 26,
-                      color: Colors.black),
+            ListTile(
+              title: Text(
+                title,
+                style: TextStyle(fontSize: 26, color: Colors.black),
+              ),
+              subtitle: Text(
+                subTitle,
+                style: TextStyle(
+                    fontSize: 22, color: Colors.black.withOpacity(0.6)),
+              ),
+              trailing: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.delete,
+                  size: 30,
+                  color: Colors.red,
                 ),
-                Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.delete,
-                    size: 30,
-                    color: Colors.red,
-                  ),
-                ),
-              ],
-            ),
-            Text(
-              subTitle,
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              ),
             ),
             Spacer(),
             Text(
               "May 21/2025",
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style:
+                  TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.6)),
             ),
           ],
         ),
@@ -59,3 +55,51 @@ class CustomNoteCard extends StatelessWidget {
     );
   }
 }
+//                  MY last code
+// Container(
+//       height: 200,
+//       width: double.infinity,
+//       decoration: BoxDecoration(
+//         color: cardColor,
+//         borderRadius: BorderRadius.circular(16),
+//       ),
+//       child: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Row(
+//               children: [
+//                 Text(
+//                   title,
+//                   style: TextStyle(
+//                       fontWeight: FontWeight.bold,
+//                       fontSize: 26,
+//                       color: Colors.black),
+//                 ),
+//                 Spacer(),
+//                 IconButton(
+//                   onPressed: () {},
+//                   icon: Icon(
+//                     Icons.delete,
+//                     size: 30,
+//                     color: Colors.red,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             Text(
+//               subTitle,
+//               style:
+//                   TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.6)),
+//             ),
+//             Spacer(),
+//             Text(
+//               "May 21/2025",
+//               style:
+//                   TextStyle(fontSize: 22, color: Colors.black.withOpacity(0.6)),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
