@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/widgets/custom_app_bar.dart';
-import 'package:note_app/widgets/custom_floating_action_button.dart';
 import 'package:note_app/widgets/custom_note_card.dart';
 import 'package:note_app/widgets/note_list_view.dart';
 

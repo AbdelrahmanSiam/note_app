@@ -7,16 +7,20 @@ class NoteListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: CustomNoteCard(
-                title: "title",
-                subTitle: "subTitle",
-                cardColor: Colors.yellowAccent),
-          );
-        },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: ListView.builder(
+          padding: EdgeInsets.zero,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: CustomNoteCard(
+                  title: "title",
+                  subTitle: "subTitle",
+                  cardColor: Colors.yellowAccent),
+            );
+          },
+        ),
       ),
     );
   }
