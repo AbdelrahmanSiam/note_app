@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/views/notes_view_body.dart';
+import 'package:note_app/widgets/add_note_bottom_sheet.dart';
 import 'package:note_app/widgets/custom_app_bar.dart';
 import 'package:note_app/widgets/custom_note_card.dart';
 
@@ -20,14 +21,5 @@ class NotesView extends StatelessWidget {
       ),
       body: NotesViewBody(),
     );
-  }
-}
-
-class AddNoteButtomSheet extends StatelessWidget {
-  const AddNoteButtomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
