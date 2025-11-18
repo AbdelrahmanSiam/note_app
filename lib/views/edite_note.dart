@@ -22,11 +22,12 @@ class EditeNote extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            CustomTextField(hintText: "Title"),
+            CustomTextFormField(hintText: "Title"),
             SizedBox(
               height: 20,
             ),
-            CustomTextField(hintText: "Content", maxLines: 6),
+            CustomTextFormField(
+                hintText: "Content", maxLines: 6),
             SizedBox(
               height: 120,
             ),
