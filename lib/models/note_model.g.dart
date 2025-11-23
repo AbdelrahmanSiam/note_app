@@ -31,7 +31,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
-      ..write(obj.subTitle)
+      ..write(obj.content)
       ..writeByte(2)
       ..write(obj.date)
       ..writeByte(3)
