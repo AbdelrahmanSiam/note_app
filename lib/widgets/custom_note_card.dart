@@ -42,7 +42,9 @@ class CustomNoteCard extends StatelessWidget {
                       fontSize: 22, color: Colors.black.withOpacity(0.6)),
                 ),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete(); // using HiveObject we do not need to create delete cubit
+                  },
                   icon: Icon(
                     Icons.delete,
                     size: 30,
