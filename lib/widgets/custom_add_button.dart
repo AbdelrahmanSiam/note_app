@@ -11,16 +11,16 @@ class CustomAddButton extends StatelessWidget {
       child: Container(
         height: 55,
         width: MediaQuery.of(context).size.width,
-        child: Center(
-          child:isLoading? CircularProgressIndicator(color: Colors.black,): Text(
-            'Add',
-            style: TextStyle(
-                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ),
         decoration: BoxDecoration(
           color: Colors.cyan,
           borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child:isLoading? const CircularProgressIndicator(color: Colors.black,): Text(
+            'Add',
+            style: const TextStyle(
+                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );
