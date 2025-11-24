@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/cubits/add_note_cubit/cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/edite_note.dart';
 
@@ -44,6 +46,8 @@ class CustomNoteCard extends StatelessWidget {
                 trailing: IconButton(
                   onPressed: () {
                     note.delete(); // using HiveObject we do not need to create delete cubit
+                    BlocProvider.of<NotesCubit>(context)
+                        .fetchAllNotes(); // to fetch all notes after delete
                   },
                   icon: Icon(
                     Icons.delete,
