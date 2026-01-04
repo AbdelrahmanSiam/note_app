@@ -42,7 +42,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
                             child: SearchView(),
                           )));
             },
-            title: "Note",
+            title: "XNote",
             icon: Icon(Icons.search),
           ),
           Expanded(child: NoteListView()),

@@ -39,43 +39,48 @@ class _EditNoteState extends State<EditNote> {
         },
         builder: (context, state) {
           return Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  SizedBox(height: 50),
-                  CustomAppBar(
-                    onPressed: () {
-                      BlocProvider.of<AddNoteCubit>(context).updateNote(
-                        widget.note,
-                        newTitle: title,
-                        newContent: content,
-                        newColor: selectedColor,
-                      );
-                    },
-                    title: 'Edit Note',
-                    icon: Icon(Icons.check),
+            resizeToAvoidBottomInset: true,
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 50),
+                      CustomAppBar(
+                        onPressed: () {
+                          BlocProvider.of<AddNoteCubit>(context).updateNote(
+                            widget.note,
+                            newTitle: title,
+                            newContent: content,
+                            newColor: selectedColor,
+                          );
+                        },
+                        title: 'Edit Note',
+                        icon: Icon(Icons.check),
+                      ),
+                      SizedBox(height: 30),
+                      CustomTextFormField(
+                        hintText: widget.note.title,
+                        onChanged: (value) => title = value,
+                      ),
+                      SizedBox(height: 20),
+                      CustomTextFormField(
+                        hintText: widget.note.content,
+                        maxLines: 6,
+                        onChanged: (value) => content = value,
+                      ),
+                      SizedBox(height: 20),
+                      EditNoteColorsListView(
+                        note: widget.note,
+                        onColorChanged: (color) => selectedColor = color,
+                      ),
+                      SizedBox(height: 120),
+                      if (state is AddNoteLoadingState)
+                        CircularProgressIndicator(),
+                    ],
                   ),
-                  SizedBox(height: 30),
-                  CustomTextFormField(
-                    hintText: widget.note.title,
-                    onChanged: (value) => title = value,
-                  ),
-                  SizedBox(height: 20),
-                  CustomTextFormField(
-                    hintText: widget.note.content,
-                    maxLines: 6,
-                    onChanged: (value) => content = value,
-                  ),
-                  SizedBox(height: 20),
-                  EditNoteColorsListView(
-                    note: widget.note,
-                    onColorChanged: (color) => selectedColor = color,
-                  ),
-                  SizedBox(height: 120),
-                  if (state is AddNoteLoadingState)
-                    CircularProgressIndicator(),
-                ],
+                ),
               ),
             ),
           );

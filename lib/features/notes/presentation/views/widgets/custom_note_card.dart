@@ -3,27 +3,29 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/notes/presentation/manager/notes_cubit/notes_cubit.dart';
 import 'package:note_app/core/models/note_model.dart';
 import 'package:note_app/features/notes/presentation/views/edite_note.dart';
+import 'package:note_app/features/search/presentation/manager/search_note_cubit/search_note_cubit.dart';
 
 class CustomNoteCard extends StatelessWidget {
   const CustomNoteCard({
     super.key,
     required this.note,
-    required this.index,
+    this.onDelete,
   });
   final NoteModel note;
-  final int index;
+  final VoidCallback? onDelete;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => EditNote(
-              note: note,
-            ),
-          ),
-        );
+  context,
+  MaterialPageRoute(
+    builder: (context) => EditNote(note: note),
+  ),
+).then((_) {
+  BlocProvider.of<SearchNoteCubit>(context).refreshSearch();
+});
+
       },
       child: Container(
         height: 200,
@@ -49,9 +51,9 @@ class CustomNoteCard extends StatelessWidget {
                       fontSize: 22, color: Colors.black.withOpacity(0.6)),
                 ),
                 trailing: IconButton(
-                  onPressed: () {
+                  onPressed: onDelete ?? () {
                     BlocProvider.of<NotesCubit>(context)
-                        .deleteNotes(index); // to fetch all notes after delete
+                        .deleteNote(note); // to fetch all notes after delete
                   },
                   icon: Icon(
                     Icons.delete,

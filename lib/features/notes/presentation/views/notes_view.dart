@@ -17,7 +17,8 @@ class NotesView extends StatelessWidget {
               context: context,
               builder: (context) => AddNoteButtomSheet());
         },
-        backgroundColor: Colors.cyan,
+        backgroundColor: Color(0XFFFFE1AE),
+        foregroundColor: Color(0XFFD0332C),
         shape: CircleBorder(),
         child: Icon(Icons.add),
       ),

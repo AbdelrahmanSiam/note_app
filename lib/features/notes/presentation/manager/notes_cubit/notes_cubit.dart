@@ -25,8 +25,9 @@ class NotesCubit extends Cubit<NotesState> {
     emit(NotesSuccessState(notes: notes));
   }
 
-  void deleteNotes(int index) {
-    noteRepo.deleteNote(index);
-    fetchAllNotes();
-  }
+  void deleteNote(NoteModel note) async {
+  await note.delete(); 
+  fetchAllNotes();
+}
+
 }
