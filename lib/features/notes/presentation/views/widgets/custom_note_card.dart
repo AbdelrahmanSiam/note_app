@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/cubits/add_note_cubit/cubit/notes_cubit.dart';
-import 'package:note_app/models/note_model.dart';
-import 'package:note_app/views/edite_note.dart';
+import 'package:note_app/features/notes/presentation/manager/notes_cubit/notes_cubit.dart';
+import 'package:note_app/core/models/note_model.dart';
+import 'package:note_app/features/notes/presentation/views/edite_note.dart';
 
 class CustomNoteCard extends StatelessWidget {
   const CustomNoteCard({
     super.key,
     required this.note,
+    required this.index,
   });
   final NoteModel note;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +19,9 @@ class CustomNoteCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EditeNote(note: note,),
+            builder: (context) => EditNote(
+              note: note,
+            ),
           ),
         );
       },
@@ -40,14 +44,14 @@ class CustomNoteCard extends StatelessWidget {
                 ),
                 subtitle: Text(
                   note.content,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       fontSize: 22, color: Colors.black.withOpacity(0.6)),
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    note.delete(); // using HiveObject we do not need to create delete cubit
                     BlocProvider.of<NotesCubit>(context)
-                        .fetchAllNotes(); // to fetch all notes after delete
+                        .deleteNotes(index); // to fetch all notes after delete
                   },
                   icon: Icon(
                     Icons.delete,

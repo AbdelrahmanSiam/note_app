@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:note_app/cubits/add_note_cubit/cubit/notes_cubit.dart';
-import 'package:note_app/widgets/add_bottom_form.dart';
+import 'package:note_app/core/utils/service_locater.dart';
+import 'package:note_app/features/notes/data/repo/note_repo.dart';
+import 'package:note_app/features/notes/data/repo/note_repo_implementaion.dart';
+import 'package:note_app/features/notes/presentation/manager/add_note_cubit/add_note_cubit.dart';
+import 'package:note_app/features/notes/presentation/manager/notes_cubit/notes_cubit.dart';
+import 'package:note_app/features/notes/presentation/views/widgets/add_bottom_form.dart';
 
 class AddNoteButtomSheet extends StatelessWidget {
   const AddNoteButtomSheet({super.key});
@@ -11,7 +14,7 @@ class AddNoteButtomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddNoteCubit(),
+      create: (context) => AddNoteCubit(getIt.get<NoteRepo>()),
       child: Padding(
         padding: EdgeInsets.only(
             right: 8.0,
