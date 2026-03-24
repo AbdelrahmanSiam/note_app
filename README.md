@@ -49,7 +49,7 @@
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture(MVVM)
 
 ```
 lib/
@@ -63,10 +63,6 @@ lib/
         ├── data/
         │   ├── models/        # NoteModel (Hive object)
         │   └── datasources/   # Hive local datasource
-        ├── domain/
-        │   ├── entities/      # NoteEntity
-        │   ├── repos/         # Repository interface
-        │   └── use_cases/     # Add, Edit, Delete, Fetch, Search
         └── presentation/
             ├── cubits/        # NotesCubit, AddNoteCubit, SearchCubit
             └── views/         # Start, Home, Add, Edit, Search screens
